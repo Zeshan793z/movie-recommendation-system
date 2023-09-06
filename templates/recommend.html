@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %} {% include 'submit-form.html' %}
+<h1 class="display-6">Showing recommended for movie <b>{{ name }}</b></h1>
+<hr />
+{% if error %}
+<p class="text-center text-danger">{{error}}</p>
+{% else %}
+<div
+    class="d-flex align-items-start justify-content-center gap-3 flex-wrap mt-4"
+>
+    {% for i in range(movies_count) %} {% if images[i] != None %}
+    <div class="card" style="width: 18rem">
+        <img
+            src="{{images[i]}}"
+            class="card-img-top"
+            alt="{{movies[i]}}"
+            height="450px"
+            width="250px"
+        />
+        <div class="card-body">
+            <h5 class="card-title">{{movies[i]}}</h5>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+</div>
+{% endif %} {% endblock %}
